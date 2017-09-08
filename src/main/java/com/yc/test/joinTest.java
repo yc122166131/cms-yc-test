@@ -1,4 +1,4 @@
-package com.yc.testInstance;
+package com.yc.test;
 
 /**
  * join 多线程实例

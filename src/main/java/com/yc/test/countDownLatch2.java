@@ -1,4 +1,4 @@
-package com.yc.testInstance;
+package com.yc.test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,12 +7,12 @@ import java.util.concurrent.CountDownLatch;
 
 
 /**
- * 1. countDownLatch 的应用 
+ * 1. countDownLatch  的应用 
  * 2. ArrayList 和  Vector 在操纵同一个对象时候的 线程安全问题
  * @author yuanchen
  *
  */
-public class CountDownLatchTest {
+public class countDownLatch2 {
 	
 	public static void main(String[] args) {
 		
@@ -39,9 +39,7 @@ public class CountDownLatchTest {
 		
 	}
 	
-	
 }
-
 
 class MyThread implements Runnable{
 	
