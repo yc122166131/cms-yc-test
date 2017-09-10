@@ -48,16 +48,17 @@
 			}  
 			
 			// exec main function  
+			// (execA.jsp  作为跨域 的 中间媒介 )
 			function exec_main(){  
 			  if(typeof(exec_obj)=='undefined'){  
 			      exec_obj = document.createElement('iframe');  
 			      exec_obj.name = 'tmp_frame';  
-			      exec_obj.src = 'http://127.0.0.1:8020/aaa/execA.html?p='+params;  
+			      exec_obj.src = 'http://localhost:8866/execA.jsp?p='+params;  
 			      exec_obj.style.display = 'none';  
 			      document.body.appendChild(exec_obj); 
 			      
 			  }/* else{  
-			      exec_obj.src = 'http://127.0.0.1:8020/aaa/execA.html?' + Math.random();  
+			      exec_obj.src = 'http://localhost:8866/execA.jsp?' + Math.random();  
 			  }   */
 			}  
 					
