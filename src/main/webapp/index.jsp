@@ -31,25 +31,45 @@
 		<a href="javascript:void(0);" onclick=javascript:testGetJSON();> 测试$.getJson方法 </a>
 		<input type="button" value="点击"  onclick="btnCl();" />
 		
-		<a href="javascript:void(0);" onclick="ky();" id="ttt"> 
-			点击跨域
-		</a>
 		
+		<!--  下面是 跨域-->
+		<p><input type="button" value="exec main function" onclick="exec_main()"></p>  
 		
 </form>
 
 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
 	
+		    var params = 'nihao1111111';
+		    
+			// 在主页面跨域调用子iframe页面时调用的方法
+			function fIframe(){   
+			  alert('iframe function execute success');  
+			}  
+			
+			// exec main function  
+			function exec_main(){  
+			  if(typeof(exec_obj)=='undefined'){  
+			      exec_obj = document.createElement('iframe');  
+			      exec_obj.name = 'tmp_frame';  
+			      exec_obj.src = 'http://127.0.0.1:8020/aaa/execA.html?p='+params;  
+			      exec_obj.style.display = 'none';  
+			      document.body.appendChild(exec_obj); 
+			      
+			  }/* else{  
+			      exec_obj.src = 'http://127.0.0.1:8020/aaa/execA.html?' + Math.random();  
+			  }   */
+			}  
+					
 		
-		function ky(){	
-			 window.open("http://127.0.0.1:8020/Myproj/20170829.html");
-		}
 		
-		window.onmessage = function (e){
-			var ev = event || e ;
-			console.log(ev.data);
-		}
+		
+		
+		
+		
+		
+		
+		
 		
 		function btnCl(){
 			$.ajax({
