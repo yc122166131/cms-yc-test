@@ -40,7 +40,7 @@
 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
 	
-		    var params = 'nihao1111111';
+		    var params = 'nihao666';
 		    
 			// 在主页面跨域调用子iframe页面时调用的方法
 			function fIframe(){   
