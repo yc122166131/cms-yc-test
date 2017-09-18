@@ -35,11 +35,80 @@
 		<!--  下面是 跨域-->
 		<p><input type="button" value="exec main function" onclick="exec_main()"></p>  
 		
+		<!--  cookie -->
+		<p> <input type="button" id="cookieBtn"  value="cookie测试" /></p>
+		<br>
+		<input  type="button" value="获取cookie"   onclick="javascript:getCookie_tmp();"  />
+		<br/>
+		<input  type="button" value="销毁cookie"   onclick="javascript:destroyCookie();"  />
+		
+		<input   type="button"  value="jsonp请求"   id="jsonpBtn"   onclick="javascript:jsonpFunc();" />
+		
+		<br/>
+		<input type="button" value="测试encodeUrl" onclick="testEncodeUrl();">
 </form>
 
 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<!-- <script type="text/javascript" src="js/jquery.cookie.min.js"></script> -->
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
 <script type="text/javascript">
-	
+			
+			
+			$(function(){
+				
+				$("#cookieBtn").click(function(){
+					//$.cookie('ooo', 'cookieValue111');  
+					//$.cookie('the_cookie', 'the_value', { expires: 7 });
+					$.cookie('cookie2017', '2017', { expires: 7, path: '/',secure:true });
+				});
+				
+			});
+			
+			
+			
+			
+			function testEncodeUrl(){
+				 window.open("${pageContext.request.contextPath}/test/testEncodeHtml.action?tranId=87678567a&todopageaid=do0&urlhide=http%3A%2F%2Fportaltest2.sh.cmcc%2Fwps%2FPA_1_CM8P9FH20ORU20A71OF31M2000%2Fstatic%2Ffinish.html");
+				
+			}
+			
+			
+			
+			function jsonpFunc(){
+					
+				$.ajax({
+					type : "GET",
+					url : "http://localhost:8866/testRequestMapping/getT/1989aa",
+					dataType : "jsonp",
+					jsonp:"ycCallback",
+					success : function(data){
+						console.log(data);
+						//alert(Object.prototype.toString.call(data));
+						for(var key in data){
+							alert("key: " + key + "value: "+data[key]);
+						}
+					},
+					error:function(msg){
+						console.log("error!");
+					}
+				});
+			}
+			
+			
+			function getCookie_tmp(){
+				var tmp = $.cookie("cookie2017");
+				console.log(tmp);
+			}
+			
+			
+			
+			function destroyCookie(){
+				 name = "the_cookie";
+				 $.cookie(name,null);
+			}
+			
+			//========================== js跨域相关  start =======================================
+			
 		    var params = 'nihao666';
 		    
 			// 在主页面跨域调用子iframe页面时调用的方法
@@ -57,21 +126,22 @@
 			      exec_obj.style.display = 'none';  
 			      document.body.appendChild(exec_obj); 
 			      
-			  }/* else{  
+			  }
+			  /* else{  
 			      exec_obj.src = 'http://localhost:8866/execA.jsp?' + Math.random();  
-			  }   */
+			 	 }   */
+			  
+			  
+			  //window.location.href = "https://www.baidu.com";
+				
 			}  
 					
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+			
+			//==========================  end   js跨域相关   =======================================
+			
+			
+			
+				
 		function btnCl(){
 			$.ajax({
 				type:"post",

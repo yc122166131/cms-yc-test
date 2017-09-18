@@ -13,6 +13,11 @@
 	</properties>
 	<dependencies>
 		<dependency>
+	  		<groupId>cms-common</groupId>
+	  		<artifactId>cms-common</artifactId>
+	  		<version>0.0.1-SNAPSHOT</version>
+	  	</dependency>
+		<dependency>
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf-rt-frontend-jaxws</artifactId>
 			<version>${cxf.version}</version>
@@ -55,12 +60,9 @@
 				<artifactId>jackson-databind</artifactId>
 				<version>${jackson.version}</version>
 		</dependency>
-		
-		
+
 		<!--  spring  mvc  -->
 		
-
-
 		<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-web</artifactId>

@@ -1,6 +1,8 @@
 package com.yc.servlet;
 
 import java.io.IOException;
+import java.net.URLDecoder;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +33,13 @@ public class TestServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				
-				//getParameterMap()的应用
+		
+		
+				String str = "&todopageaid=do0&urlhide=http%3A%2F%2Fportaltest2.sh.cmcc%2Fwps%2FPA_1_CM8P9FH20ORU20A71OF31M2000%2Fstatic%2Ffinish.html";
+				
+				String st = URLDecoder.decode(str, "UTF-8"); 
+				
+				//getParameterMap()锟斤拷应锟斤拷
 				String[] favourates = request.getParameterMap().get("fav");
 				for(int i = 0 ; i < favourates.length ; i++ ){
 					System.out.println(favourates[i]);
