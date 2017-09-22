@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.test.mapper.TestMapper" >
+
+
+
+
+
+<insert id="addTestTbl" parameterType="Test">
+		insert into test2017(name,test_desc,price,create_time) 
+		values(#{name},#{desc},#{price},#{createTime})
+</insert>
+
+
+
+
+
+<!-- resultMap 里面 只需要放一些 特殊的 (即 pojo 和  数据库字段 不匹配的 字段 )做一下映射即可 -->
+<!--  <resultMap id="jdproduct" type="jDProduction" >
+    <id column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="supCate_name" property="productType_1st" jdbcType="VARCHAR" />
+    <result column="subCate_name" property="productType_2nd" jdbcType="VARCHAR" />
+  </resultMap>
+
+也可以指定 查询出 一些 字段 (其余的 全部为 null)
+  <select id="getAll" resultMap="jdproduct">
+    select product_name,supCate_name from yc_product 
+  </select>
+  
+
+ <insert id="insertJDItemInfo" parameterType="java.util.List">
+	  insert into yc_product(product_id,product_name,imgPath,price,commentAmount,companyName,supCate_name,subCate_name,brandName)
+  values
+  <foreach collection="list" item="item" index="index"
+   separator=",">
+   (#{item.productId},#{item.productName,jdbcType=VARCHAR},#{item.imgPath,jdbcType=VARCHAR},#{item.price,jdbcType=VARCHAR},
+    #{item.commentAmount,jdbcType=VARCHAR}, #{item.companyName,jdbcType=VARCHAR}, #{item.productType_1st,jdbcType=VARCHAR},
+    #{item.productType_2nd,jdbcType=VARCHAR}, #{item.brandName,jdbcType=VARCHAR})
+  </foreach>
+
+</insert>
+  
+  
+   <resultMap id="JDProductInfoByTypeId" type="jDProduction" >
+	    <result column="product_id" property="productId" jdbcType="VARCHAR" />
+	    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+	    <result column="commentAmount" property="commentAmount" jdbcType="VARCHAR" />
+	    <result column="companyName" property="companyName" jdbcType="VARCHAR" />
+	    <result column="brandName" property="brandName" jdbcType="VARCHAR" />
+	    <result column="price" property="price" jdbcType="VARCHAR" />
+	    <result column="type_id" property="typeId" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="getProductInfoByProductTypeId" parameterType="java.lang.Long" resultMap="JDProductInfoByTypeId">
+	 SELECT
+	    p1.product_id,
+	    p1.product_name,
+	    p1.commentAmount,
+	    p1.companyName,
+        p1.brandName,
+        p1.price ,
+        p1.type_id
+	  FROM yc_product_type ty LEFT JOIN yc_product p1 ON ty.id = p1.type_id WHERE ty.id = #{id}
+  </select>
+   -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</mapper>
