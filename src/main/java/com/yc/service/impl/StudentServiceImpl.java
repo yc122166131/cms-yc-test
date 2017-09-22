@@ -20,26 +20,26 @@ import com.yc.test.entity.Teacher;
 
 
 
-/*Ôª×¢½âµÄ¼¸ÖÖ½âÊÍ£º
+/*å…ƒæ³¨è§£çš„å‡ ç§è§£é‡Šï¼š
 
-@POST ¨C·şÎñ½ÓÊÜ´¦ÀíPOST ÇëÇó
-@Path ¨C web·şÎñµÄURLÂ·¾¶£¬×¥È¡URL Url <base_url>/bookservice/getbook/{name} , Ôö¼Ó:<base_url>/bookservice/addbook
-@Produces ¨C Ö¸Ê¾ÏìÓ¦µÄMIMEÀàĞÍ£¬ÔÚ°¸ÀıÖĞÊÇ application/xml ºÍ application/json.
-@Consumes ¨C Õâ¸ö·şÎñÄÜÏû·ÑµÄÇëÇóµÄMIMEÀàĞÍ*/
+@POST â€“æœåŠ¡æ¥å—å¤„ç†POST è¯·æ±‚
+@Path â€“ webæœåŠ¡çš„URLè·¯å¾„ï¼ŒæŠ“å–URL Url <base_url>/bookservice/getbook/{name} , å¢åŠ :<base_url>/bookservice/addbook
+@Produces â€“ æŒ‡ç¤ºå“åº”çš„MIMEç±»å‹ï¼Œåœ¨æ¡ˆä¾‹ä¸­æ˜¯ application/xml å’Œ application/json.
+@Consumes â€“ è¿™ä¸ªæœåŠ¡èƒ½æ¶ˆè´¹çš„è¯·æ±‚çš„MIMEç±»å‹*/
 
 
 /**
- * cxf restful ĞÎÊ½µÄserver¶Ë service
+ * cxf restful å½¢å¼çš„serverç«¯ service
  * @author yuanchen
  *
  */
 @Service("studentService")
-@Path("/studentService") //Õâ¸öÊÇ¸ùÏîÄ¿ÏÂ µÄ µÚÒ»¼¶Â·¾¶
+@Path("/studentService") //ï¿½ï¿½ï¿½ï¿½Ç¸ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Ò»ï¿½ï¿½Â·ï¿½ï¿½
 public class StudentServiceImpl  {
 	
 	
 	/*
-	 * client  ÇëÇó´úÂë
+	 * client  è¯·æ±‚ä»£ç 
 	 * 
 	 * StudentDto stu = client.path("studentService/getStuInfo/333")
 	.accept(contentType).get(StudentDto.class);
@@ -47,13 +47,11 @@ public class StudentServiceImpl  {
 	*/
 	
 	/**
-	 * ´«µİµÄÖµ ·ÅÔÚ urlÖĞ(³£ÓÃÓÚGETÌá½»)
-	 * ĞÎÊ½£º /aaa/bbb/1
+	 * ä¼ é€’çš„å€¼ æ”¾åœ¨ urlä¸­(å¸¸ç”¨äºGETæäº¤)
+	 * å½¢å¼ï¼š /aaa/bbb/1
 	 * @param name
 	 * @return
 	 */
-	
-	
     @GET
 	@Path("/getStuInfo/{name}")
     @Produces({"application/xml","application/json"})
@@ -64,24 +62,21 @@ public class StudentServiceImpl  {
 		
 		StudentDto outDto = null;
 		if(!"0".equals(name)){
-			
 			outDto = new StudentDto();
-			
 			List<Student> list = new ArrayList<Student>();
-			
-			//µÚÒ»×é
+			//ç¬¬ä¸€ç»„
 			Student stu1 = new Student();
 			Teacher t1 = new  Teacher();
-			t1.setName("ÍõÀÏÊ¦");
+			t1.setName("ç‹è€å¸ˆ");
 			t1.setPassword("12345");
 			Hobby h1 = new Hobby();
-			h1.setFav("ÌåÓı");
+			h1.setFav("ä½“è‚²");
 			h1.setId(1);
 			Hobby h2 = new Hobby();
-			h2.setFav("ÓïÎÄ");
+			h2.setFav("è¯­æ–‡");
 			h2.setId(2);
 			Hobby h3 = new Hobby();
-			h3.setFav("ÊıÑ§");
+			h3.setFav("æ•°å­¦");
 			h3.setId(3);
 			
 			stu1.setTeacher(t1);
@@ -90,25 +85,25 @@ public class StudentServiceImpl  {
 			lhobby.add(h2);
 			lhobby.add(h3);
 			stu1.setHobbies(lhobby);
-			stu1.setName("Ğ¡°¡");
+			stu1.setName("å°å•Š");
 			stu1.setPassword("520");
 			list.add(stu1);
 			
 			
 			
-			//µÚ¶ş×é
+			//ç¬¬äºŒç»„
 			Student stu2 = new Student();
 			Teacher t2 = new  Teacher();
-			t2.setName("ÕÅÀÏÊ¦");
+			t2.setName("å¼ è€å¸ˆ");
 			t2.setPassword("1234566");
 			Hobby h4 = new Hobby();
-			h4.setFav("ÂÃÓÎ");
+			h4.setFav("æ—…æ¸¸");
 			h4.setId(4);
 			Hobby h5 = new Hobby();
-			h5.setFav("ÈÕÓï");
+			h5.setFav("æ—¥è¯­");
 			h5.setId(5);
 			Hobby h6 = new Hobby();
-			h6.setFav("Ó¢Óï");
+			h6.setFav("è‹±è¯­");
 			h6.setId(6);
 			
 			stu2.setTeacher(t2);
@@ -134,19 +129,19 @@ public class StudentServiceImpl  {
 	
 	
     
-    //==========================ÏÂÃæÊÇPOSTĞÎÊ½ Ìá½» ()========================================
+   //==========================ä¸‹é¢æ˜¯POSTå½¢å¼ æäº¤ ()========================================
     
     
     /*
-     *   client  ÇëÇó´úÂë
+     *   client  è¯·æ±‚ä»£ç 
      *   Student stu2 = new Student();
-		 stu2.setName("ÕÅÈı1");
+		 stu2.setName("å¼ ä¸‰1");
 		 StudentDto stu = client.path("studentService/getStuInfoByPost")
 			.accept(contentType).post(stu2,StudentDto.class);
 	*/
     
 	/**
-	 * ´«µİµÄÖµ ×÷Îª Èë²Î´«Èë (³£ÓÃÓÚPOSTÌá½»)
+	 * ä¼ é€’çš„å€¼ ä½œä¸º å…¥å‚ä¼ å…¥ (å¸¸ç”¨äºPOSTæäº¤)
 	 * @param name
 	 * @return
 	 */
@@ -161,9 +156,9 @@ public class StudentServiceImpl  {
 		Student s = null;
 		StudentDto sDto = new StudentDto();
 		if(stu!=null) {
-			if("ÕÅÈı".equals(stu.getName())){
+			if("å¼ ä¸‰".equals(stu.getName())){
 				s = new Student();
-				s.setName("ÕÅÈıreturn");
+				s.setName("å¼ ä¸‰return");
 			}
 			List<Student> lstu = new ArrayList<Student>();
 			lstu.add(s);

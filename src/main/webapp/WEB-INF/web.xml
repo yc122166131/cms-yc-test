@@ -5,11 +5,15 @@
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 	
+	
+	<!-- 初始化spring容器 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-			WEB-INF/classes/applicationContext-rest.xml
+			<!-- WEB-INF/classes/applicationContext-rest.xml
 			WEB-INF/classes/applicationContext.xml
+			WEB-INF/classes/applicationContext-mq.xml -->
+			classpath:spring/applicationContext*.xml
 		</param-value>
 	</context-param>
 	<listener>
@@ -17,10 +21,6 @@
 			org.springframework.web.context.ContextLoaderListener
 		</listener-class>
 	</listener>
-	
-	
-	
-	
 	
 	
 		
@@ -38,7 +38,11 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
-	<!-- 前端控制器 -->
+	
+	
+	
+	
+	<!-- 前端控制器 springmvc -->
 	<servlet>
 		<servlet-name>ycCms-test-web</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -66,10 +70,6 @@
 	
 	
 	
-	
-	
-	
-	
 	<!-- cxf configuration -->
 	<servlet>
 		<servlet-name>CXFServlet</servlet-name>
@@ -94,6 +94,7 @@
 		<url-pattern>
 		/TestServlet</url-pattern>
 	</servlet-mapping>
+	
 	
 	
 	<!--  testServlet configuration  -->

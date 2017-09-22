@@ -46,12 +46,35 @@
 		
 		<br/>
 		<input type="button" value="测试encodeUrl" onclick="testEncodeUrl();">
+		<br/>
+		<br/>
+		
+		<input type="button" value="测试mybatis插入数据"  onclick="addTestDate1();" />
+		
+		
+		
 </form>
 
 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
 <!-- <script type="text/javascript" src="js/jquery.cookie.min.js"></script> -->
 <script type="text/javascript" src="js/jquery.cookie.js"></script>
 <script type="text/javascript">
+			
+			
+			function addTestDate1(){
+				$.ajax({
+					url:"${pageContext.request.contextPath}/test/saveTestDate1.action",
+					type:"post",
+					dataType:"json",
+					success:function(data){
+						console.log(data);
+					},
+					error:function(msg){
+						alert("error!");
+						console.log(msg);
+					}
+				});
+			}
 			
 			
 			$(function(){
